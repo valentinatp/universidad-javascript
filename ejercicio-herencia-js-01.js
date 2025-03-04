@@ -39,8 +39,8 @@
 
 class Persona{
     static contadorPersonas = 0;
-    constructor(idPersona, nombre, apellido, edad){
-        this._idPersona = idPersona;
+    constructor(nombre, apellido, edad){
+        this._idPersona = ++Persona.contadorPersonas;
         this._nombre = nombre;
         this._apellido = apellido;
         this._edad = edad;
@@ -66,17 +66,27 @@ class Persona{
     set setEdad(edad){
         this._edad = edad;
     }
-    nombreCompleto(){
-        return this._nombre + ' ' + this._apellido;
-    }
+    //se elimina el metodo nombre completo
+    // nombreCompleto(){
+    //     return this._nombre + ' ' + this._apellido;
+    // }
     toString(){
-        return this.nombreCompleto();
+        //return this.nombreCompleto();
+        return this._idPersona + ' ' + this._nombre + ' ' + this._apellido + ' ' + this._edad;
+        //return `${this._idPersona}
+        //        ${this._nombre}
+        //        ${this._apellido}
+        //        ${this._edad}
+        // `;
     }
 }
 
 class Empleado extends Persona {
-    constructor(idPersona, nombre, apellido, edad, sueldo){
-        super(idPersona, nombre, apellido, edad)
+    //se agrega el contador propio para IDs Empleados a traves de una variable STATIC
+    static contadorEmpleados = 0;
+    constructor(nombre, apellido, edad, sueldo){
+        super(nombre, apellido, edad)
+        this._idEmpleado = ++Empleado.contadorEmpleados;
         this._sueldo = sueldo;
     }
     get getIdEmpleado(){
@@ -89,14 +99,18 @@ class Empleado extends Persona {
         this._sueldo = sueldo;
     }
     toString(){
-        return this.nombreCompleto();
+        //return this.nombreCompleto();
+        //se utiliza la herencia para utilizar el metodo toString() de la clase Persona
+        return super.toString() + ' ' + this._idEmpleado + ' ' + this._sueldo;
     }
 }
 
 class Cliente extends Persona{
+    static contadorClientes = 0;
     static fechaRegistro = new Date();
-    constructor(idPersona, nombre, apellido, edad, fechaRegistro){
-        super(idPersona, nombre, apellido, edad);
+    constructor(nombre, apellido, edad, fechaRegistro){
+        super(nombre, apellido, edad);
+        this._idCliente = ++Cliente.contadorClientes;
         this._fechaRegistro = fechaRegistro;
     }
     get getIdCliente(){
@@ -109,6 +123,20 @@ class Cliente extends Persona{
         this._fechaRegistro = fechaRegistro;
     }
     toString(){
-        return this.nombreCompleto();
+        //return this.nombreCompleto();
+        return super.toString() + ' ' + this._idCliente + ' ' + this._fechaRegistro;
+        //`${super.toString()}`
     }
 }
+
+//Pruebas de desarrollo
+//se crea nuevo Objeto Persona.
+let personaHerencia1 = new Persona('Oscar', 'Toledo', 60);
+console.log(personaHerencia1.toString());
+let personaHerencia2 = new Persona('Nelly', 'Porma', 67);
+console.log(personaHerencia2.toString());
+//se crea nuevo objeto Empleado
+let empleadoHerencia1 = new Empleado('Tomasa', 'Porma', 30, 50000);
+console.log(empleadoHerencia1.toString());
+let empleadoHerencia2 = new Empleado('Valentina', 'Toledo', 28, 50000);
+console.log(empleadoHerencia2.toString());

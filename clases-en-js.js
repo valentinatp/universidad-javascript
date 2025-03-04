@@ -1,6 +1,6 @@
 //Clases en JS
 //Se crea clase Persona con su respectivo constructor.
-class Persona{
+/*class Persona{
     constructor(nombre, apellido){
         //se les agrega '_' a las propiedades ya que en los métodos GET y SET
         //no se les puede agregar una propiedad con el mismo nombre
@@ -138,3 +138,4 @@ Empleado.saludar2(_empleadoPersonaHerencia);
 console.log(PersonaHerencia.contadorObjetosPersonaHerencia);
 //Tambien se puede consultar la variable Static desde una clase hija
 console.log(Empleado.contadorObjetosPersonaHerencia);
+*/
