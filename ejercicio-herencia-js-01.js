@@ -66,11 +66,17 @@ class Persona{
     set setEdad(edad){
         this._edad = edad;
     }
-    nombreCompleto(){
-        return this._nombre + ' ' + this._apellido;
-    }
+    // nombreCompleto(){
+    //     return this._nombre + ' ' + this._apellido;
+    // }
     toString(){
-        return this.nombreCompleto();
+        //return this.nombreCompleto();
+        return this._idPersona + ' ' + this._nombre + ' ' + this._apellido + ' ' + this._edad;
+        //return `${this._idPersona}
+        //        ${this._nombre}
+        //        ${this._apellido}
+        //        ${this._edad}
+        // `;
     }
 }
 
